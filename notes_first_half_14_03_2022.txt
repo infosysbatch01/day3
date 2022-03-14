@@ -1,0 +1,650 @@
+
+
+   if(i>10)
+      System.out.println("i is larger than 10");
+   else
+     System.out.println("i is smaller than 10");
+--------------------------------------------------------
+if(i>10){
+      System.out.println("i is larger than 10");
+     } 
+  else{
+     System.out.println("i is smaller than 10");
+      }
+-------------------------------------------------------------------
+// The below code will show compilation error
+if(i>10){
+      System.out.println("i is larger than 10");
+     
+  else{
+     System.out.println("i is smaller than 10");
+      }
+----------------------------------------------------------------------------------------------
+class Customer {
+// id,name and address are the instance variables of the Customer class
+// or member variables
+     int id;
+     String name;
+     String address;
+
+  
+    public static void main(String args[]) {
+// To access the member variables of a class, we need to create the object first and then
+// we try to access the members with the help of dot(.) operator
+    Customer customer=new Customer();
+  // new Customer() is creating a new object and the address of the newly create object is
+  // stored in the reference variable customer.
+  // Scanner input=new Scanner(System.in);
+  // input is a reference variable which is holding/storing the address of the newly created
+  // object of Scanner class.(new Scanner(System.in))  
+  // If we have Employee class and we need to create the object, what
+  // is the syntax of doing that?
+  // Employee emp=new Employee();
+  // Customer customer;  We are declaring a reference variable of Customer type
+  // customer=new Customer(); // We created an object of Customer class and stored the 
+  // address of newly created object in the reference variable customer.;
+     customer.id=1;
+     customer.name="Rajesh";
+     customer.address="6/1 Jawahar Road, Kolkata";
+     System.out.println(customer.id);
+     System.out.println(customer.name);
+     System.out.println(customer.address);
+
+    }
+ }
+    
+---------------------------------------------------------------------------------------
+// local variables are the variables declared within a method
+// instance variables are declared within a class
+class Customer2 {
+     int id;
+     String name;
+     String address;
+  public static void main(String args[]) {
+    Customer2 customer1=new Customer2();
+    Customer2 customer2=new Customer2();
+    int id=3; // local variables(id,name and address) to the main
+    // method are local to the main method and they have
+    // any relationship with the id,name and address of Customer
+    // class 
+    String name="Nitin" 
+    String address="Mumbai";
+    customer1.id=1;
+    customer1.name="Rajesh";
+    customer1.address="6/1 Jawahar Road, Kolkata";
+    customer2.id=2;
+    customer2.name="Sudha";
+    customer2.address="A/1 Netaji Nagar, Kolkata";
+    customer2.id=2;
+    System.out.println(customer1.id);
+    System.out.println(customer1.name);
+    System.out.println(customer1.address);
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+    System.out.println(customer1.id);
+    System.out.println(customer1.name);
+    System.out.println(customer1.address);  
+    System.out.println(customer2.id);
+    System.out.println(customer2.name);
+    System.out.println(customer2.address);  
+
+    }
+ }
+    // Let us make the code more modular by creating some more methods apart
+   // from the main method
+class Customer3 {
+     int id;
+     String name;
+     String address;
+
+  // setData and dispData are two member methods
+  // setData is to store the data
+  // dispData is to display data
+   void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+    
+   }
+
+   void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+
+  public static void main(String args[]) {
+     Customer3 customer=new Customer3();
+    // In this approach we are not directly accessing the member variables
+    // though we have a liberty of doing so.
+    // The below code will also work. 
+       customer.id=0;
+       System.out.println(customer.id); //0
+       customer.setData();
+       customer.dispData();
+    }
+ }
+
+
+class Customer3b {
+     int id;
+     String name;
+     String address;
+
+  // setData and dispData are two member methods
+  // setData is to store the data
+  // dispData is to display data
+  /* void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+    
+   } */
+
+   void setData(int id1, String name2, String address2)
+  {
+     id=id1;
+     name=name2;
+     address=address2;     
+  }
+
+   void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+
+  public static void main(String args[]) {
+     Customer3b customer1=new Customer3b();
+     Customer3b customer2=new Customer3b(); 
+       
+      
+       customer1.setData(1,"Ram","A/32 Indira Colony Delhi");
+       customer1.dispData();
+       customer2.setData(2,"Ratan","22/2 Delhi");
+       customer2.dispData();
+    }
+ }
+
+
+
+
+
+
+
+
+------------------------------------------------------------------------------------------------
+Q What are access specifier in Object Oriented Language like java?
+A access specifier decides the accessibility of class, member variable and methods from 
+  other classes within the same package or different package. Currently we have not discussed
+  much about packages and we are working with the default package.
+
+  class Data{}  // The Data class is in the default package.
+----------------------------------------------------------------------------------------
+  package com.infosys;
+
+  class Data{}
+
+// In the current example Data class is withing the package infosys. infosys is a subpackage of 
+   com.  
+----------------------------------------------------------------------------------------------
+In Customer3 code all the member variables and methods were having the access specifier as
+default and we can observe that main method is public so that they can be easily accessed outside
+the class and the package. 
+-------------------------------------------------------------------------------------------
+What will happen if we declare all the members as public?
+A public members can be accessed from anywhere. Anywhere means outside the class and even outside
+the package declaration.
+
+
+class Customer4 {
+     public int id;
+     public String name;
+     public String address;
+
+   public void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   public void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+
+  public static void main(String args[]) {
+     Customer4 customer=new Customer4();
+    // In this approach we are not directly accessing the member variables
+    // though we have a liberty of doing so.
+    // The below code will also work. 
+       customer.id=0;
+       System.out.println(customer.id); //0
+       customer.setData();
+       customer.dispData();
+    }
+ }
+-------------------------------------------------------------------------------------------
+What about declaring the members as private?
+A private members can be accessed in the same class and can't be accessed outside the class
+where they are defined.
+
+class Customer5 {
+     private int id;
+     private String name;
+     private String address;
+
+   private void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   private void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+
+  public static void main(String args[]) {
+     Customer5 customer=new Customer5();
+    // In this approach we are not directly accessing the member variables
+    // though we have a liberty of doing so.
+    // The below code will also work. 
+       customer.id=0;
+       System.out.println(customer.id); //0
+       customer.setData();
+       customer.dispData();
+    }
+ }
+---------------------------------------------------------------------------------
+So can we have multiple classes for the above approach?
+A Yes we can have. 
+
+
+class Customer6 {
+     private int id;
+     private String name;
+     private String address;
+
+   private void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   private void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+}
+
+ class CustomerMain6{
+  
+  public static void main(String args[]) {
+     Customer6 customer=new Customer6();
+   
+       customer.id=0;
+       System.out.println(customer.id); 
+       customer.setData();
+       customer.dispData();
+    }
+ }
+-----------------------------------------
+In the above approach we kept both the classes in the same file. We are getting error in the
+above code as we are trying to access private members of class Customer6 from another class
+called CustomerMain6. 
+Is it possible to have two separate files for storing two different classes?
+A Yes. Let us plan for the files Customer7.java and CustomerMain7.java.
+ 
+ // Customer7.java 
+
+class Customer7 {
+     private int id;
+     private String name;
+     private String address;
+
+   private void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   private void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+}
+
+// CustomerMain7.java 
+
+class CustomerMain7{
+  // id and setData and dispDAta
+	// are the private members of Customer class
+	// that is reason they are not accessible
+	// from main method which is in a different class
+	// called CustomerMain7
+  public static void main(String args[]) {
+     Customer7 customer=new Customer7();
+   
+       customer.id=0;
+       System.out.println(customer.id); 
+       customer.setData();
+       customer.dispData();
+    }
+ }
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+ 
+ // Customer8.java 
+
+class Customer8 {
+     private int id;
+     private String name;
+     private String address;
+
+   void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+}
+
+// CustomerMain8.java 
+
+class CustomerMain8{
+  // id and setData and dispDAta
+	// are the private members of Customer class
+	// that is reason they are not accessible
+	// from main method which is in a different class
+	// called CustomerMain7
+  public static void main(String args[]) {
+     Customer8 customer=new Customer8();
+   // The id cannot be accessed
+     // as it is private to the Customer class
+     /*  customer.id=0;
+       System.out.println(customer.id); */
+       customer.setData();
+       customer.dispData();
+    }
+ }
+--------------------------------------------------------
+What will happen if we make setData and dispData as with access specifier?
+A These are again accessible outside the class class. 
+
+-----------------------------------------------------------------
+What is difference between the access as default and public?
+A No difference until unless we work in different packages. Currently we are not working with the codes where the classes are in different package.
+Current the classes are in the same package so the effect of writing the members as default and public will be same.
+
+
+// Customer9.java 
+
+class Customer9 {
+     private int id;
+     private String name;
+     private String address;
+
+   public void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   public void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+}
+
+// CustomerMain9.java 
+
+class CustomerMain9{
+  
+  public static void main(String args[]) {
+     Customer9 customer=new Customer9();
+       customer.setData();
+       customer.dispData();
+    }
+ }
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+// Customer9b.java 
+
+class Customer9b {
+     private int id;
+     private String name;
+     private String address;
+
+   public void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   public void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+}
+
+// CustomerMain9b.java 
+
+class CustomerMain9b{
+  
+  public static void main(String args[]) {
+     Customer9b customer=new Customer9b();
+       customer.setData();
+       customer.dispData();
+    }
+ }
+
+-----------------------------------------------------------------------
+public access specifier with class decides whether the class can be accessed outside the package. Currently we are not using multiple packages and
+even we are not creating any package. As currently we are working in the default package.
+
+
+
+// Customer10.java 
+
+public class Customer10 {
+     private int id;
+     private String name;
+     private String address;
+
+   public void setData(){
+     id=1;
+     name="Akash";
+     address="A/122 Alam Nagar Lucknow";
+   }
+
+   public void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+}
+
+// CustomerMain10.java 
+
+public class CustomerMain10{
+  
+  public static void main(String args[]) {
+     Customer10 customer=new Customer10();
+       customer.setData();
+       customer.dispData();
+    }
+ }
+
+WE ARE FROM NOW FOLLOW THE APPROACH SIMILAR TO THE ABOVE EXAMPLE OF Customer10 AND CustomerMain10.
+* Let us have classes as public.
+* member or instance variables as private.
+* methods as public.
+* main will be public.
+-----------------------------------------------------------------------------------------------------------------------------------------
+When we are declaring a class as public , class name and file name should be same. 
+If we are having the class with default/package specifier , it is not essential to keep the class name and file name same. Example suppose the class is not 
+public in that case we can have the following way of creating a class.
+
+Suppose the file name is Hi.java and it contains
+
+  class Hello {
+   public static void main(String args[]) {
+    System.out.println("Hello Friends!!!");
+   }
+  }
+
+Now if we declare the class as public in that case it is mandatory to keep the class and the file name same.
+
+public class Hello {
+   public static void main(String args[]) {
+    
+   }
+ }
+
+In the above case, we have to keep the file name as Hello.java otherwise it will show compilation error.
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ // Customer11.java 
+
+public class Customer11 {
+     private int id;
+     private String name;
+     private String address;
+//  id1, name1 and address1 are parameters and local variables to the setData method.
+// We cannot access them in any other method of Customer11
+   public void setData(int id1, String name1, String address1){
+     id=id1;
+     name=name1;
+     address=address1;
+   }
+
+   public void dispData(){
+    System.out.println(id);
+    System.out.println(name);
+    System.out.println(address);
+   }
+}
+
+// CustomerMain11.java 
+
+public class CustomerMain11{
+  
+  public static void main(String args[]) {
+     Customer11 customer1=new Customer11();
+     Customer11 customer2=new Customer11();
+       customer1.setData(1,"Suresh","Chennai");  // method call
+       customer1.dispData();
+       customer2.setData(2,"Naresh","Hyderabad");
+       customer2.dispData();
+    }
+ }
+
+------------------------------------------------------------
+
+public class Calculator {
+private int num1;
+private int num2;
+private int result;
+// Here the return type is void and
+// method with parameters and
+// parameters are having datatype as int
+public void setData(int n1, int n2)
+{
+	num1=n1;
+	num2=n2;
+}
+// Here the return type is void and
+// method is not passed with any parameter
+/* public void add()
+{
+	result=num1+num2;
+	System.out.println(result);
+}*/
+
+
+public int add()
+{
+	result=num1+num2;
+	return result;
+}
+
+}
+
+
+
+public class CalculatorMain {
+
+	public static void main(String[] args) {
+		Calculator calc=new Calculator();
+		calc.setData(1, 2);
+		// result is a local variable to main method
+		// and it is not same as that in the result
+		// class, there it is one of the instance
+		// variable
+		int result=calc.add();
+        System.out.println(result);
+        System.out.println(calc.add());
+	}
+
+}
+-----------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+// As we decided that result is not used by any other method so let use declare it 
+// within the add method.
+
+public class Calculator2 {
+private int num1;
+private int num2;
+
+public void setData(int n1, int n2)
+{
+	num1=n1;
+	num2=n2;
+}
+
+
+public int add()
+{
+       // Result here is a local variable and it cannot be accessed by any other method of the Calculator2
+      // class
+	int result=num1+num2;
+	return result;
+}
+
+}
+
+
+
+public class CalculatorMain2 {
+
+	public static void main(String[] args) {
+		Calculator2 calc=new Calculator2();
+		calc.setData(1, 2);
+                // The below result declaration is local to the main method and it is not the same local variable in add method of the Calculator2 class.
+		int result=calc.add();
+                System.out.println(result);
+                System.out.println(calc.add());
+	}
+
+}
+
