@@ -1,0 +1,263 @@
+Pass a number to a method and display the output as starting from 1 to that number.
+Enter the number
+5
+1
+2
+3
+4
+5
+   public class DisplayNumbers {
+
+        public void dispValues(int num){
+        for(int i=1;i<=num;i++){
+           System.out.println(i);
+         }
+      }
+   }
+
+   public class DisplayNumbersMain{
+      public static void main(String args[]) {
+      DisplayNumbers dn=new DisplayNumbers();
+      dn.dispValues(10);
+      System.out.println("-----End---------");
+     }
+   }
+ 
+
+----------------------------------------------
+
+Enter a number from user and display the sum of numbers from 1 to till that number.
+
+
+
+public class AddNumbers {
+
+   private int sum;
+
+        public int addValues(int num){
+
+        for(int i=1;i<=num;i++){
+             sum+=i;
+         }
+         return sum;
+      }
+   }
+
+ import java.util.Scanner;
+
+public class AddNumbersMain{
+      public static void main(String args[]) {
+      AddNumbers an=new AddNumbers();
+      Scanner scan=new Scanner(System.in);
+      System.out.println("Enter the number till which we have to add");	
+      int num=scan.nextInt();
+      int res=an.addValues(num);
+      System.out.println("The sum as: "+res);
+     }
+   }
+-----------------------------------------------------------------------------------------------------
+public class Number {
+    private int num;
+    private boolean isEven;
+     public boolean isEvenMethod(){
+         if(num%2==0)
+         {
+        	isEven=true; 
+         }
+        // If we are not writing isEven with else as false, 
+        // than also it will work because the default value
+         // in boolean variable is false
+         else
+         {
+        	 isEven=false;
+         }
+    	 return isEven;
+     }
+     public void setNumber(int n){
+       num=n;
+      }
+  }
+import java.util.Scanner; 
+public class NumberMain {
+   public static void main(String args[]){
+    Scanner scan=new Scanner(System.in);
+    Number number=new Number();
+    System.out.println("Enter the number");
+    int num=scan.nextInt();
+    number.setNumber(num);
+   // System.out.println(number.isEvenMethod());
+   /* boolean b=number.isEvenMethod();
+    if(b) or if(b==true)or if(number.isEvenMethod()==true) or if(number.isEven())*/
+    if(number.isEvenMethod()) // if the condition is true if(true) {}
+    {
+    System.out.println("The number is even");	
+    }
+    else
+    {
+    	System.out.println("The number is odd");
+    }
+  }
+}  
+--------------------------------------------------------------------------------------------------  
+Q How the instance variables are initialised?
+A With the help of constructors. 
+
+Q What are constructors?
+A constructors are methods.
+B constructor is having the same name as that of the class name.
+C constructor don't have any return type.
+D Constructors are used to initialise instance variables and ultimately initialising the object.
+E Constructors can parameterless or parameterized. 
+F If we dont write a constructor in the code, by default constructor is pushed to the code
+  during the compilation of the code.
+G We dont need to explicitly call the constructor. 
+H If we are writing our own constructor, compiler wont provide the default constructor.
+// Let us see the point F.
+
+  public class Data {
+   private int num;
+   private String name;
+   private boolean b;
+   private float f;
+
+  public void displayData(){
+   System.out.println(num);
+   System.out.println(name);
+   System.out.println(b);
+   System.out.println(f);
+  }
+
+  public void setData(int n1, String name1, boolean b1, float f1){
+   num=n1; 
+   name=name1;
+   b=b1;
+   f=f1;
+ }
+}
+
+ public class DataMain {
+  public static void main(String args[]) {
+   Data data=new Data();
+   System.out.println("Before invoking the setData() method");
+   data.displayData(); //0 null false 0.0
+   System.out.println("Afer setData() method is called");
+   data.setData(1,"XYZ",true,12.23f);
+   data.displayData();
+  }
+}
+
+------------------------------------
+// Let us write a parameterless/default constructor.
+
+
+  public class Data2 {
+   private int num;
+   private String name;
+   private boolean b;
+   private float f;
+
+  // The following is a parameterless constructor
+ // 
+  public Data2(){
+    num=100;
+    name="Tom";
+    b=true;
+    f=100.50f;
+  }
+
+  public void displayData(){
+   System.out.println(num);
+   System.out.println(name);
+   System.out.println(b);
+   System.out.println(f);
+  }
+
+  public void setData(int n1, String name1, boolean b1, float f1){
+   num=n1; 
+   name=name1;
+   b=b1;
+   f=f1;
+ }
+}
+
+ public class DataMain2 {
+  public static void main(String args[]) {
+   Data2 data=new Data2();
+   System.out.println("Before invoking the setData() method");
+   data.displayData();
+   System.out.println("Afer setData() method is called");
+   data.setData(1,"XYZ",true,12.23f);
+   data.displayData();
+  }
+}
+-----------------------------------------------------------------------------------------
+ Q Is constructor enough to set the values?
+A No because constructors are called once during the object creation. What will happen if we 
+  want to change the value of an object. 
+  1 Employee emp=new Employee();
+  The object created in line one need to be set with a new set of values. can we write new Employee() 
+  once again. No because writing new Employee() is creating a new Object.
+  2. emp=new Employee();
+ So in line2 once again a new object is getting created which replaces the address of the object created in line1.
+So the constructor is just for one time initialisation of the members but if we want to change 
+the values during the further execution of the code, we need to have setData kind of method.
+
+-------------------------------------------------------------------------------------------------- 
+// Parameterized constructors
+
+ public class Data3 {
+   private int num;
+   private String name;
+   private boolean b;
+   private float f;
+
+  // The following is a parameterized constructor
+ // Can we have the same name for the parameters as of the instance variables?
+ // Yes but we have work more.
+  public Data3(int n1, String name1, boolean b1, float f1){
+    num=n1;
+    name=name1;
+    b=b1;
+    f=f1;
+  }
+
+  public void displayData(){
+   System.out.println(num);
+   System.out.println(name);
+   System.out.println(b);
+   System.out.println(f);
+  }
+
+  public void setData(int n1, String name1, boolean b1, float f1){
+   num=n1; 
+   name=name1;
+   b=b1;
+   f=f1;
+ }
+}
+
+ public class DataMain3 {
+  public static void main(String args[]) {
+   Data3 data=new Data3(1,"Umesh",true,23.45f);
+   System.out.println("Before invoking the setData() method");
+   data.displayData();
+   System.out.println("Afer setData() method is called");
+   data.setData(1,"XYZ",true,12.23f);
+   data.displayData();
+   data.setData(1, "ABC", true, 12.23f);
+   data.displayData();
+   data=new Data3(5,"Amandeep",false,34.56f);
+   // so the object which is created in line3 is not longer usable in the code
+   // as the address of the objected created in line3 is overwritten by the
+   // address of the object created in line11
+   Data3 data1=new Data3(6,"Nidhi",false,45.5f);
+   // If we dont want to replace the address by the newly created object then we 
+   // can take other reference variable instead of taking the reference variable
+   // which is already holding the address of another object
+  }
+}
+----------------------------------------------------------------------------------------------------
+
+
+
+
