@@ -484,3 +484,136 @@ public class Data7 {
    
   }
 }
+-----------------------
+1   Employee employee=new Employee();
+2   employee=new Employee();
+
+Q How many objects got created till line 2.  
+A Two objects got created. In line 1 , an object got created and in line 2 second object got
+  created but now the reference variable is not holding the address of the object which
+  got created in line 1. So the object which got created in line 1 is eligible for 
+  garbage collection ( It is a process of making the memory free from the object which is 
+  not refered by any reference variable with the code).
+
+1 Employee employee=new Employee();
+2 Employee employeeBackup=employee;
+3 employee=new Employee();
+4 System.out.println("Hello");
+Q How many objects got created till line 3.
+A 2 objects are getting created that is in line 1 and line3. In line2 new object is not getting
+  created but the address which employee reference variable is holding, that is being passed
+  to employeeBackup.
+Q How many objects are eligible for garbage collection ?
+A 0.  The object which got created in line 1 , backed up by the reference variable employeeBackup.
+      The employee is now holding the address of the newly created object in line2. 
+
+Employee emp1=new Employee();
+Employee emp2,emp3;
+emp2=emp3=emp1;
+
+
+1. public class CustomerMain {
+2.     public static void main(String str[]) {
+3.      Customer cust=new Customer();
+4      cust.setData();
+5.      cust.dispData();
+6.    }
+7. }
+
+In the above code scope of the main method is ending in line6. So the object is eligible for garbage
+collection after this. The object which got created in line 3 is eligible for garbage collection at line 7. 
+
+
+-------------------------------------------
+
+
+class Book {
+  private String id;
+  private String title;
+  private float price;
+
+  public void setData(Sting id, String title, float price){
+      this.id=id;
+      this.title=title;
+      this.price=price;
+  }
+
+  public void displayData() {
+   System.out.println(id);
+   System.out.println(title);
+   System.out.println(price);
+  }
+ }
+
+ class BookMain{
+   public static void main(String args[]) {
+     Book book=new Book();
+     book.setData("B0001","Java",600);
+     book.displayData();
+    }
+ }
+  
+-------------
+// For every attribute have a pair of methods , one for storing the value
+// another for accessing the value
+public class Book {
+  private String id;
+  private String title;
+  private float price;
+
+  public void setId(String id) {
+   this.id=id;
+  }
+ 
+  public String getId(){
+   return id;
+  }
+
+  public void setTitle(String title) {
+   this.title=title;
+  }
+
+  public String getTitle() {
+   return title;
+  }
+ 
+ public void setPrice(float price) {
+   this.price=price;
+ }
+
+ public float getPrice() {
+  return price;
+ }
+ 
+ 
+
+ /* public void setData(Sting id, String title, float price){
+      this.id=id;
+      this.title=title;
+      this.price=price;
+  }
+
+  public void displayData() {
+   System.out.println(id);
+   System.out.println(title);
+   System.out.println(price);
+  } */
+ }
+
+ public class BookMain{
+   public static void main(String args[]) {
+     Book book=new Book();
+     /* book.setData("B0001","Java",600);
+     book.displayData(); */
+     book.setId("B0001");
+     book.setTitle("Java");
+     book.setPrice(600);
+     String id=book.getId();
+     String title=book.getTitle();
+     float price=book.getPrice();
+     System.out.println(id);
+     System.out.println(title);
+     System.out.println(price);  
+  }
+ }
+  
